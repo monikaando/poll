@@ -7,8 +7,8 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="app">
-      <div>
+    <div className="app d-flex flex-column justify-content-between" >
+      <div className="d-flex pb-3 mt-5 flex-row justify-content-around">
         <Create />
         <Vote />
         <Results />

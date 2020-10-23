@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Results = () => {
-    return ( 
-        <h1>
-            Results page
-        </h1>
-     );
-}
- 
+  return (
+    <div>
+      <h2>Results page</h2>
+    </div>
+  );
+};
+
 export default Results;

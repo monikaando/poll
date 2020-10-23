@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Vote = () => {
-    return ( 
-        <h1>
-            Vote page
-        </h1>
-     );
-}
- 
+  return (
+    <div>
+      <h2>Vote page</h2>
+    </div>
+  );
+};
+
 export default Vote;

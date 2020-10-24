@@ -9,7 +9,9 @@ export default class Create extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      question: "",
+      question: {
+        value: "",
+      },
       answers: [],
       counter: 0,
       disabled: false,
@@ -28,8 +30,12 @@ export default class Create extends React.Component {
   }
 
   updateQuestion(e) {
+    const questionText = this.state.question.value.length;
+    this.disableFields(questionText);
     this.setState({
-      question: e.target.value,
+      question: {
+        value: e.target.value,
+      },
     });
   }
   handleInput(e) {
@@ -44,7 +50,7 @@ export default class Create extends React.Component {
     e.preventDefault();
     const answers = this.state.answers;
     const newAnswer = this.state.currentAnswer;
-    const text = this.state.currentAnswer.value;
+    const text = this.state.currentAnswer.value.length;
     if (newAnswer.value !== "" && answers.length < 10) {
       const newAnswers = [...this.state.answers, newAnswer];
       this.setState({
@@ -56,7 +62,7 @@ export default class Create extends React.Component {
         },
       });
     }
-    this.disableFields(text)
+    this.disableFields(text);
   }
 
   deleteAnswer(key) {
@@ -74,20 +80,20 @@ export default class Create extends React.Component {
     answers.map((item) => {
       if (item.key === key) {
         item.value = value;
-        this.disableFields(item.value)
+        this.disableFields(item.value.length);
       }
       return null;
-    });   
+    });
 
     this.setState({
       answers: answers,
     });
-
-
   }
   reset() {
     this.setState({
-      question: "",
+      question: {
+        value: "",
+      },
       answers: [],
       counter: 0,
       disabled: false,
@@ -98,18 +104,17 @@ export default class Create extends React.Component {
     });
   }
   disableFields(value) {
-    if (value.length > 80) {
+    if (value >= 81) {
       document.getElementById("add-answer-field").disabled = true;
       this.setState({
         disabled: true,
       });
     } else {
-        document.getElementById("add-answer-field").disabled = false;
-        this.setState({
-            disabled: false,
-          });
+      document.getElementById("add-answer-field").disabled = false;
+      this.setState({
+        disabled: false,
+      });
     }
-
   }
   render() {
     let Alert;
@@ -126,19 +131,18 @@ export default class Create extends React.Component {
           Add at least 2 answers
         </div>
       );
-    } 
-    else {
+    } else {
       Alert = null;
     }
-    if(this.state.disabled===true){
-        AlertDisabled= (
-            <div className="alert alert-danger" role="alert">
-              You reach max(80) characters
-            </div>
-          );
-    }else {
-        AlertDisabled = null;
-      }
+    if (this.state.disabled === true || this.state.question.value.length >= 81) {
+      AlertDisabled = (
+        <div className="alert alert-danger" role="alert">
+          You can add max 80 characters
+        </div>
+      );
+    } else {
+      AlertDisabled = null;
+    }
     return (
       <div className="create-box">
         <div>
@@ -150,7 +154,7 @@ export default class Create extends React.Component {
               type="text"
               maxLength="81"
               className="form-control mb-3 mt-3 bg-warning"
-              value={this.state.question}
+              value={this.state.question.value}
               onChange={this.updateQuestion}
               placeholder="Type a question"
             />
@@ -163,7 +167,7 @@ export default class Create extends React.Component {
               <div className="input-group mb-3">
                 <input
                   type="text"
-                  maxLength="81"
+                  maxLength="80"
                   className="form-control bg-light text-dark"
                   id="add-answer-field"
                   placeholder="Type an answer"

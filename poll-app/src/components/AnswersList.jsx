@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/AnswersList.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function AnswersList(props) {
@@ -6,11 +7,15 @@ function AnswersList(props) {
   const listAnswers = answers.map((item) => {
     return (
       <div
-        className="d-flex justify-content-between align-items-center bg-info text-white border border-light rounded mb-2"
+        className="list d-flex justify-content-between align-items-center bg-info text-white border border-light rounded mb-2"
         key={item.key}
       >
         <p className="pl-3 mb-1 d-flex justify-content-between align-items-center">
-        <input type="text" id={item.key} value={item.value} className="bg-transparent border-0"></input>
+        <input className="bg-transparent border-0" type="text" id={item.key} value={item.value} onChange={
+            (e)=>{
+                props.setUpdate(e.target.value,item.key)
+            }
+        } ></input>
         </p>
         <span className="pr-2">
             <FontAwesomeIcon className="faicons" icon="times" onClick={()=>props.deleteAnswer(item.key)}/>

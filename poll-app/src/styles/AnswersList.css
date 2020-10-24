@@ -1,0 +1,3 @@
+.list p input:focus {
+    outline: none;
+}

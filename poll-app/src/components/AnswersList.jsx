@@ -8,20 +8,20 @@ function AnswersList(props) {
   const listAnswers = answers.map((item) => {
     return (
       <div
-        className="list d-flex justify-content-between align-items-center bg-info text-white border border-light rounded mb-2"
-        key={item.key}
+        className="list d-flex justify-content-between align-items-center bg-info border border-light rounded mb-2"
+        key={item.key} contenteditable="true" aria-multiline="true"
       >
-        <p className="pl-3 mb-1 d-flex justify-content-between align-items-center">
-          <input
-            className="bg-transparent border-0"
+          <textarea
+            className="pl-3 mb-1 bg-transparent text-white border-0"
             type="text"
+            wrap="soft"
+            maxLength="80"
             id={item.key}
             value={item.value}
             onChange={(e) => {
               props.setUpdate(e.target.value, item.key);
             }}
-          ></input>
-        </p>
+          ></textarea>
         <span className="pr-2">
           <FontAwesomeIcon
             type="button"

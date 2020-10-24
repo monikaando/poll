@@ -1,3 +1,8 @@
-.list p input:focus {
+.list textarea {
+    height:28px;
+    width:90%;
+}
+.list textarea:focus {
     outline: none;
+
 }

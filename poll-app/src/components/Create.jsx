@@ -86,30 +86,39 @@ export default class Create extends React.Component {
       },
     });
   }
+  
   render() {
     let Alert;
     if (this.state.counter === 10) {
       Alert = (
-        <div class="alert alert-danger" role="alert">
+        <div className="alert alert-danger" role="alert">
           You can't add more answers
+        </div>
+      );
+    } else if (this.state.counter < 2) {
+      Alert = (
+        <div className="alert alert-warning" role="alert">
+          Add at least 2 answers
         </div>
       );
     } else {
       Alert = null;
     }
+
     return (
       <div className="create-box">
         <div>
           <h2>Create</h2>
         </div>
         <div className="create-context d-flex flex-column justify-content-between">
-          <div>
+        <div>
             <input
               type="text"
+              maxLength="80"
               className="form-control mb-3 mt-3 bg-warning"
               value={this.state.question}
               onChange={this.updateQuestion}
-              placeholder="Question"
+              placeholder="Type a question"
             />
             <AnswersList
               answers={this.state.answers}
@@ -120,6 +129,7 @@ export default class Create extends React.Component {
               <div className="input-group mb-3">
                 <input
                   type="text"
+                  maxLength="80"
                   className="form-control bg-light text-dark"
                   placeholder="Type an answer"
                   aria-label="Type an answer"
@@ -139,17 +149,19 @@ export default class Create extends React.Component {
               </div>
             </form>
           </div>
-          {Alert}
-          <div className="possible-answers d-flex justify-content-between align-items-end">
-            <p className="m-0">{this.state.counter}/10 possible answers</p>
-            <button
-              className="btn btn-outline-secondary bg-danger text-white pl-4 pr-4 pt-1 pb-1"
-              type="button"
-              value="reset"
-              onClick={this.reset}
-            >
-              Reset
-            </button>
+          <div>
+            {Alert}
+            <div className="possible-answers d-flex justify-content-between align-items-end">
+              <p className="m-0">{this.state.counter}/10 possible answers</p>
+              <button
+                className="btn btn-outline-secondary bg-danger text-white pl-4 pr-4 pt-1 pb-1"
+                type="button"
+                value="reset"
+                onClick={this.reset}
+              >
+                Reset
+              </button>
+            </div>
           </div>
         </div>
       </div>

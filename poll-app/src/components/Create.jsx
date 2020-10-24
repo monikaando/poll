@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Create.css";
 import AnswersList from "./AnswersList";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +11,7 @@ export default class Create extends React.Component {
     this.state = {
       question: "",
       answers: [],
+      counter: 0,
       currentAnswer: {
         value: "",
         key: "",
@@ -24,7 +26,7 @@ export default class Create extends React.Component {
   }
   updateQuestion(e) {
     this.setState({
-      question: e.target.value
+      question: e.target.value,
     });
   }
   handleInput(e) {
@@ -37,12 +39,13 @@ export default class Create extends React.Component {
   }
   addAnswer(e) {
     e.preventDefault();
+    const answers = this.state.answers;
     const newAnswer = this.state.currentAnswer;
-    console.log(newAnswer);
-    if (newAnswer.value !== "") {
+    if (newAnswer.value !== "" && answers.length < 10) {
       const newAnswers = [...this.state.answers, newAnswer];
       this.setState({
         answers: newAnswers,
+        counter: this.state.counter + 1,
         currentAnswer: {
           value: "",
           key: "",
@@ -56,14 +59,17 @@ export default class Create extends React.Component {
     );
     this.setState({
       answers: filteredAnswers,
+      counter: this.state.counter - 1,
     });
   }
+
   setUpdate(value, key) {
     const answers = this.state.answers;
     answers.map((item) => {
       if (item.key === key) {
         item.value = value;
       }
+      return null;
     });
     this.setState({
       answers: answers,
@@ -73,6 +79,7 @@ export default class Create extends React.Component {
     this.setState({
       question: "",
       answers: [],
+      counter: 0,
       currentAnswer: {
         value: "",
         key: "",
@@ -80,51 +87,70 @@ export default class Create extends React.Component {
     });
   }
   render() {
+    let Alert;
+    if (this.state.counter === 10) {
+      Alert = (
+        <div class="alert alert-danger" role="alert">
+          You can't add more answers
+        </div>
+      );
+    } else {
+      Alert = null;
+    }
     return (
-      <div>
+      <div className="create-box">
         <div>
           <h2>Create</h2>
         </div>
-
-        <input
-          type="text"
-          className="form-control mb-3 mt-5 bg-warning"
-          value={this.state.question}
-          onChange={this.updateQuestion}
-          placeholder="Question"
-        />
-        <AnswersList
-          answers={this.state.answers}
-          deleteAnswer={this.deleteAnswer}
-          setUpdate={this.setUpdate}
-        ></AnswersList>
-        <form onSubmit={this.addAnswer}>
-          <div className="input-group mb-3">
+        <div className="create-context d-flex flex-column justify-content-between">
+          <div>
             <input
               type="text"
-              className="form-control bg-light text-dark"
-              placeholder="Type an answer"
-              aria-label="Type an answer"
-              aria-describedby="button-addon2"
-              value={this.state.currentAnswer.value}
-              onChange={this.handleInput}
+              className="form-control mb-3 mt-3 bg-warning"
+              value={this.state.question}
+              onChange={this.updateQuestion}
+              placeholder="Question"
             />
-            <div className="input-group-append">
-              <button
-                className="btn btn-outline-secondary bg-info text-white"
-                type="submit"
-                id="button-addon2"
-              >
-                Add
-              </button>
-            </div>
+            <AnswersList
+              answers={this.state.answers}
+              deleteAnswer={this.deleteAnswer}
+              setUpdate={this.setUpdate}
+            ></AnswersList>
+            <form onSubmit={this.addAnswer}>
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className="form-control bg-light text-dark"
+                  placeholder="Type an answer"
+                  aria-label="Type an answer"
+                  aria-describedby="button-addon2"
+                  value={this.state.currentAnswer.value}
+                  onChange={this.handleInput}
+                />
+                <div className="input-group-append">
+                  <button
+                    className="btn btn-outline-secondary bg-info text-white"
+                    type="submit"
+                    id="button-addon2"
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-        <div className="d-flex justify-content-between align-items-center">
-          <p>1/10 possible answers</p>
-          <button type="button" value="reset" onClick={this.reset}>
-            Reset
-          </button>
+          {Alert}
+          <div className="possible-answers d-flex justify-content-between align-items-end">
+            <p className="m-0">{this.state.counter}/10 possible answers</p>
+            <button
+              className="btn btn-outline-secondary bg-danger text-white pl-4 pr-4 pt-1 pb-1"
+              type="button"
+              value="reset"
+              onClick={this.reset}
+            >
+              Reset
+            </button>
+          </div>
         </div>
       </div>
     );

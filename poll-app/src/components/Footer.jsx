@@ -2,8 +2,8 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className="p-2 bg-light text-dark fixed-bottom text-center">
-      <h6 className="pt-2">
+    <div className="bg-light text-dark fixed-bottom text-center">
+      <p className="p-2 m-0">
         Created by{" "} 
         <a
           href="https://monikaswidzinska.netlify.app/"
@@ -12,7 +12,7 @@ const Footer = () => {
         >
           Monika Swidzinska
         </a>
-      </h6>
+      </p>
     </div>
   );
 };

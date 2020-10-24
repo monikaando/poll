@@ -24,7 +24,7 @@ function AnswersList(props) {
         </p>
         <span className="pr-2">
           <FontAwesomeIcon
-            className="faicons"
+            type="button"
             icon="times"
             onClick={() => props.deleteAnswer(item.key)}
           />

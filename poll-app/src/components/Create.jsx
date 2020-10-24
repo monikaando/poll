@@ -1,7 +1,10 @@
 import React from "react";
 import AnswersList from "./AnswersList";
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {faTimes} from "@fortawesome/free-solid-svg-icons"
 
 
+library.add(faTimes);
 export default class Create extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +17,7 @@ export default class Create extends React.Component {
     };
     this.handleInput = this.handleInput.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
+    this.deleteAnswer = this.deleteAnswer.bind(this);
   }
   handleInput(e) {
     this.setState({
@@ -38,7 +42,12 @@ export default class Create extends React.Component {
           })
       }
   }
-
+  deleteAnswer(key) {
+      const filteredAnswers = this.state.answers.filter(item=>item.key!==key);
+      this.setState({
+          answers: filteredAnswers
+      })
+  }
   render() {
     return (
       <div>
@@ -53,7 +62,7 @@ export default class Create extends React.Component {
             placeholder="Question"
             onChange={this.handleChange}
           />
-          <AnswersList answers={this.state.answers}></AnswersList>
+          <AnswersList answers={this.state.answers} deleteAnswer={this.deleteAnswer}></AnswersList>
           <form onSubmit={this.addAnswer}> 
           <div className="input-group mb-3">
             <input

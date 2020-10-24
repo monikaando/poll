@@ -9,13 +9,13 @@ function AnswersList(props) {
     return (
       <div
         className="list d-flex justify-content-between align-items-center bg-info border border-light rounded mb-2"
-        key={item.key} contenteditable="true" aria-multiline="true"
+        key={item.key}
       >
           <textarea
             className="pl-3 mb-1 bg-transparent text-white border-0"
             type="text"
             wrap="soft"
-            maxLength="80"
+            maxLength="81"
             id={item.key}
             value={item.value}
             onChange={(e) => {

@@ -12,6 +12,7 @@ export default class Create extends React.Component {
       question: "",
       answers: [],
       counter: 0,
+      disabled: false,
       currentAnswer: {
         value: "",
         key: "",
@@ -23,7 +24,9 @@ export default class Create extends React.Component {
     this.setUpdate = this.setUpdate.bind(this);
     this.reset = this.reset.bind(this);
     this.updateQuestion = this.updateQuestion.bind(this);
+    this.disableFields = this.disableFields.bind(this);
   }
+
   updateQuestion(e) {
     this.setState({
       question: e.target.value,
@@ -41,6 +44,7 @@ export default class Create extends React.Component {
     e.preventDefault();
     const answers = this.state.answers;
     const newAnswer = this.state.currentAnswer;
+    const text = this.state.currentAnswer.value;
     if (newAnswer.value !== "" && answers.length < 10) {
       const newAnswers = [...this.state.answers, newAnswer];
       this.setState({
@@ -52,7 +56,9 @@ export default class Create extends React.Component {
         },
       });
     }
+    this.disableFields(text)
   }
+
   deleteAnswer(key) {
     const filteredAnswers = this.state.answers.filter(
       (item) => item.key !== key
@@ -68,27 +74,46 @@ export default class Create extends React.Component {
     answers.map((item) => {
       if (item.key === key) {
         item.value = value;
+        this.disableFields(item.value)
       }
       return null;
-    });
+    });   
+
     this.setState({
       answers: answers,
     });
+
+
   }
   reset() {
     this.setState({
       question: "",
       answers: [],
       counter: 0,
+      disabled: false,
       currentAnswer: {
         value: "",
         key: "",
       },
     });
   }
-  
+  disableFields(value) {
+    if (value.length > 80) {
+      document.getElementById("add-answer-field").disabled = true;
+      this.setState({
+        disabled: true,
+      });
+    } else {
+        document.getElementById("add-answer-field").disabled = false;
+        this.setState({
+            disabled: false,
+          });
+    }
+
+  }
   render() {
     let Alert;
+    let AlertDisabled;
     if (this.state.counter === 10) {
       Alert = (
         <div className="alert alert-danger" role="alert">
@@ -101,20 +126,29 @@ export default class Create extends React.Component {
           Add at least 2 answers
         </div>
       );
-    } else {
+    } 
+    else {
       Alert = null;
     }
-
+    if(this.state.disabled===true){
+        AlertDisabled= (
+            <div className="alert alert-danger" role="alert">
+              You reach max(80) characters
+            </div>
+          );
+    }else {
+        AlertDisabled = null;
+      }
     return (
       <div className="create-box">
         <div>
           <h2>Create</h2>
         </div>
         <div className="create-context d-flex flex-column justify-content-between">
-        <div>
+          <div>
             <input
               type="text"
-              maxLength="80"
+              maxLength="81"
               className="form-control mb-3 mt-3 bg-warning"
               value={this.state.question}
               onChange={this.updateQuestion}
@@ -129,8 +163,9 @@ export default class Create extends React.Component {
               <div className="input-group mb-3">
                 <input
                   type="text"
-                  maxLength="80"
+                  maxLength="81"
                   className="form-control bg-light text-dark"
+                  id="add-answer-field"
                   placeholder="Type an answer"
                   aria-label="Type an answer"
                   aria-describedby="button-addon2"
@@ -150,6 +185,7 @@ export default class Create extends React.Component {
             </form>
           </div>
           <div>
+            {AlertDisabled}
             {Alert}
             <div className="possible-answers d-flex justify-content-between align-items-end">
               <p className="m-0">{this.state.counter}/10 possible answers</p>

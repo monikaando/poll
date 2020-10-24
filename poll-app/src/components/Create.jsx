@@ -27,7 +27,7 @@ export default class Create extends React.Component {
       e.preventDefault();
       const newAnswer = this.state.currentAnswer
       console.log(newAnswer)
-      if(newAnswer !=='') {
+      if(newAnswer.value !=='') {
           const newAnswers = [...this.state.answers, newAnswer];
           this.setState({
               answers: newAnswers,

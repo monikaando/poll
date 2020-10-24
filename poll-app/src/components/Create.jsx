@@ -8,6 +8,7 @@ export default class Create extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      question: "",
       answers: [],
       currentAnswer: {
         value: "",
@@ -18,6 +19,13 @@ export default class Create extends React.Component {
     this.addAnswer = this.addAnswer.bind(this);
     this.deleteAnswer = this.deleteAnswer.bind(this);
     this.setUpdate = this.setUpdate.bind(this);
+    this.reset = this.reset.bind(this);
+    this.updateQuestion = this.updateQuestion.bind(this);
+  }
+  updateQuestion(e) {
+    this.setState({
+      question: e.target.value
+    });
   }
   handleInput(e) {
     this.setState({
@@ -58,8 +66,18 @@ export default class Create extends React.Component {
       }
     });
     this.setState({
-        answers:answers
-    })
+      answers: answers,
+    });
+  }
+  reset() {
+    this.setState({
+      question: "",
+      answers: [],
+      currentAnswer: {
+        value: "",
+        key: "",
+      },
+    });
   }
   render() {
     return (
@@ -71,9 +89,9 @@ export default class Create extends React.Component {
         <input
           type="text"
           className="form-control mb-3 mt-5 bg-warning"
-          value={this.state.value}
+          value={this.state.question}
+          onChange={this.updateQuestion}
           placeholder="Question"
-          onChange={this.handleChange}
         />
         <AnswersList
           answers={this.state.answers}
@@ -102,6 +120,12 @@ export default class Create extends React.Component {
             </div>
           </div>
         </form>
+        <div className="d-flex justify-content-between align-items-center">
+          <p>1/10 possible answers</p>
+          <button type="button" value="reset" onClick={this.reset}>
+            Reset
+          </button>
+        </div>
       </div>
     );
   }

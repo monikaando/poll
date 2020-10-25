@@ -9,6 +9,7 @@ export default class Create extends React.Component {
   render() {
     let Alert;
     let AlertDisabled;
+    let AlertSpaces;
     if (this.props.counter === 10) {
       Alert = (
         <div className="alert alert-danger" role="alert">
@@ -35,6 +36,20 @@ export default class Create extends React.Component {
       );
     } else {
       AlertDisabled = null;
+    }
+    if (
+      (this.props.question.value.length > 0 &&
+        this.props.question.value.trim().length === 0) ||
+      (this.props.currentAnswer.value.length > 0 &&
+      this.props.currentAnswer.value.trim().length === 0)
+    ) {
+      AlertSpaces = (
+        <div className="alert alert-danger" role="alert">
+          You can't provie only spaces
+        </div>
+      );
+    } else {
+      AlertSpaces = null;
     }
     return (
       <div className="create-box">
@@ -82,6 +97,7 @@ export default class Create extends React.Component {
             </form>
           </div>
           <div>
+            {AlertSpaces}
             {AlertDisabled}
             {Alert}
             <div className="possible-answers d-flex justify-content-between align-items-end">

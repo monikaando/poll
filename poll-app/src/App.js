@@ -53,7 +53,7 @@ class App extends React.Component {
     const answers = this.state.answers;
     const newAnswer = this.state.currentAnswer;
     const text = this.state.currentAnswer.value.length;
-    if (newAnswer.value !== "" && answers.length < 10) {
+    if (newAnswer.value !== "" && newAnswer.value.trim().length !== 0 && answers.length < 10) {
       const newAnswers = [...this.state.answers, newAnswer];
       this.setState({
         answers: newAnswers,

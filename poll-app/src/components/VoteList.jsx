@@ -12,7 +12,6 @@ function VoteList(props) {
           className="form-check-input"
           type="radio"
           id={item.key}
-          checked={false}
           name="answer"
           onChange={() => props.votesCount(item.key)}
         />

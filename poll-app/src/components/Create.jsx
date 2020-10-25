@@ -198,7 +198,7 @@ export default class Create extends React.Component {
             <div className="possible-answers d-flex justify-content-between align-items-end">
               <p className="m-0">{this.state.counter}/10 possible answers</p>
               <button
-                className="btn btn-outline-secondary bg-danger text-white pl-4 pr-4 pt-1 pb-1"
+                className="btn btn-outline-secondary bg-danger text-white text-center pr-4 pl-4"
                 type="button"
                 value="reset"
                 onClick={this.reset}

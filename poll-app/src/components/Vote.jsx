@@ -3,7 +3,7 @@ import "../styles/Vote.css";
 
 const Vote = () => {
   return (
-    <div className="vote-box">
+    <div className="vote-box d-flex flex-column justify-content-between">
       <div>
         <h2>Vote</h2>
       </div>
@@ -133,13 +133,13 @@ const Vote = () => {
                 Default radio
               </label>
             </div>
-            
+
             
           </div>
         </div>
       </div>
       <button
-        className="btn btn-outline-secondary bg-info text-white pl-4 pr-4 pt-1 pb-1"
+        className="btn btn-outline-secondary bg-info text-white align-self-end text-center pr-5 pl-5"
         type="button"
       >
         Vote

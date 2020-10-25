@@ -1,8 +1,25 @@
 .list textarea {
-    height:28px;
-    width:90%;
+    height: 28px;
+    width: 90%;
 }
 .list textarea:focus {
     outline: none;
-
 }
+textarea::-webkit-scrollbar {
+    width: 1em;
+}
+
+textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: none;
+} 
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  outline: transparent;
+}
+textarea::-webkit-resizer {
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent rgb(16, 138, 156) rgb(16, 138, 156) transparent;
+    background-color: rgb(19,163,184);
+  }

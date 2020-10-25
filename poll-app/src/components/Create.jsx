@@ -29,14 +29,15 @@ export default class Create extends React.Component {
     this.disableFields = this.disableFields.bind(this);
   }
 
+  //Questions still logging length of value too late
   updateQuestion(e) {
-    const questionText = this.state.question.value.length;
-    this.disableFields(questionText);
+    const questionText = this.state.question.value.length + 1;
     this.setState({
       question: {
         value: e.target.value,
       },
     });
+    this.disableFields(questionText);
   }
   handleInput(e) {
     this.setState({
@@ -134,7 +135,10 @@ export default class Create extends React.Component {
     } else {
       Alert = null;
     }
-    if (this.state.disabled === true || this.state.question.value.length >= 81) {
+    if (
+      this.state.disabled === true ||
+      this.state.question.value.length >= 81
+    ) {
       AlertDisabled = (
         <div className="alert alert-danger" role="alert">
           You can add max 80 characters

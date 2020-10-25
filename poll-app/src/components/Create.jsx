@@ -29,9 +29,8 @@ export default class Create extends React.Component {
     this.disableFields = this.disableFields.bind(this);
   }
 
-  //Questions still logging length of value too late
   updateQuestion(e) {
-    const questionText = this.state.question.value.length + 1;
+    const questionText = this.state.question.value.length;
     this.setState({
       question: {
         value: e.target.value,
@@ -158,8 +157,8 @@ export default class Create extends React.Component {
               type="text"
               maxLength="81"
               className="form-control mb-3 mt-3 bg-warning"
+              onInput={this.updateQuestion}
               value={this.state.question.value}
-              onChange={this.updateQuestion}
               placeholder="Type a question"
             />
             <AnswersList

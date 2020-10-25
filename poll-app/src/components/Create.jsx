@@ -6,126 +6,126 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faTimes);
 export default class Create extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      question: {
-        value: "",
-      },
-      answers: [],
-      counter: 0,
-      disabled: false,
-      currentAnswer: {
-        value: "",
-        key: "",
-      },
-    };
-    this.handleInput = this.handleInput.bind(this);
-    this.addAnswer = this.addAnswer.bind(this);
-    this.deleteAnswer = this.deleteAnswer.bind(this);
-    this.setUpdate = this.setUpdate.bind(this);
-    this.reset = this.reset.bind(this);
-    this.updateQuestion = this.updateQuestion.bind(this);
-    this.disableFields = this.disableFields.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     question: {
+  //       value: "",
+  //     },
+  //     answers: [],
+  //     counter: 0,
+  //     disabled: false,
+  //     currentAnswer: {
+  //       value: "",
+  //       key: "",
+  //     },
+  //   };
+  //   this.handleInput = this.handleInput.bind(this);
+  //   this.addAnswer = this.addAnswer.bind(this);
+  //   this.deleteAnswer = this.deleteAnswer.bind(this);
+  //   this.setUpdate = this.setUpdate.bind(this);
+  //   this.reset = this.reset.bind(this);
+  //   this.updateQuestion = this.updateQuestion.bind(this);
+  //   this.disableFields = this.disableFields.bind(this);
+  // }
 
-  updateQuestion(e) {
-    const questionText = this.state.question.value.length;
-    this.setState({
-      question: {
-        value: e.target.value,
-      },
-    });
-    this.disableFields(questionText);
-  }
-  handleInput(e) {
-    this.setState({
-      currentAnswer: {
-        value: e.target.value,
-        key: Date.now(),
-      },
-    });
-  }
-  addAnswer(e) {
-    e.preventDefault();
-    const answers = this.state.answers;
-    const newAnswer = this.state.currentAnswer;
-    const text = this.state.currentAnswer.value.length;
-    if (newAnswer.value !== "" && answers.length < 10) {
-      const newAnswers = [...this.state.answers, newAnswer];
-      this.setState({
-        answers: newAnswers,
-        counter: this.state.counter + 1,
-        currentAnswer: {
-          value: "",
-          key: "",
-        },
-      });
-    }
-    this.disableFields(text);
-  }
+  // updateQuestion(e) {
+  //   const questionText = this.state.question.value.length;
+  //   this.setState({
+  //     question: {
+  //       value: e.target.value,
+  //     },
+  //   });
+  //   this.disableFields(questionText);
+  // }
+  // handleInput(e) {
+  //   this.setState({
+  //     currentAnswer: {
+  //       value: e.target.value,
+  //       key: Date.now(),
+  //     },
+  //   });
+  // }
+  // addAnswer(e) {
+  //   e.preventDefault();
+  //   const answers = this.state.answers;
+  //   const newAnswer = this.state.currentAnswer;
+  //   const text = this.state.currentAnswer.value.length;
+  //   if (newAnswer.value !== "" && answers.length < 10) {
+  //     const newAnswers = [...this.state.answers, newAnswer];
+  //     this.setState({
+  //       answers: newAnswers,
+  //       counter: this.state.counter + 1,
+  //       currentAnswer: {
+  //         value: "",
+  //         key: "",
+  //       },
+  //     });
+  //   }
+  //   this.disableFields(text);
+  // }
 
-  deleteAnswer(key) {
-    const filteredAnswers = this.state.answers.filter(
-      (item) => item.key !== key
-    );
-    this.setState({
-      answers: filteredAnswers,
-      counter: this.state.counter - 1,
-    });
-  }
+  // deleteAnswer(key) {
+  //   const filteredAnswers = this.state.answers.filter(
+  //     (item) => item.key !== key
+  //   );
+  //   this.setState({
+  //     answers: filteredAnswers,
+  //     counter: this.state.counter - 1,
+  //   });
+  // }
 
-  setUpdate(value, key) {
-    const answers = this.state.answers;
-    answers.map((item) => {
-      if (item.key === key) {
-        item.value = value;
-        this.disableFields(item.value.length);
-      }
-      return null;
-    });
+  // setUpdate(value, key) {
+  //   const answers = this.state.answers;
+  //   answers.map((item) => {
+  //     if (item.key === key) {
+  //       item.value = value;
+  //       this.disableFields(item.value.length);
+  //     }
+  //     return null;
+  //   });
 
-    this.setState({
-      answers: answers,
-    });
-  }
-  reset() {
-    this.setState({
-      question: {
-        value: "",
-      },
-      answers: [],
-      counter: 0,
-      disabled: false,
-      currentAnswer: {
-        value: "",
-        key: "",
-      },
-    });
-  }
-  disableFields(value) {
-    if (value >= 81) {
-      document.getElementById("add-answer-field").disabled = true;
-      this.setState({
-        disabled: true,
-      });
-    } else {
-      document.getElementById("add-answer-field").disabled = false;
-      this.setState({
-        disabled: false,
-      });
-    }
-  }
+  //   this.setState({
+  //     answers: answers,
+  //   });
+  // }
+  // reset() {
+  //   this.setState({
+  //     question: {
+  //       value: "",
+  //     },
+  //     answers: [],
+  //     counter: 0,
+  //     disabled: false,
+  //     currentAnswer: {
+  //       value: "",
+  //       key: "",
+  //     },
+  //   });
+  // }
+  // disableFields(value) {
+  //   if (value >= 81) {
+  //     document.getElementById("add-answer-field").disabled = true;
+  //     this.setState({
+  //       disabled: true,
+  //     });
+  //   } else {
+  //     document.getElementById("add-answer-field").disabled = false;
+  //     this.setState({
+  //       disabled: false,
+  //     });
+  //   }
+  // }
   render() {
     let Alert;
     let AlertDisabled;
-    if (this.state.counter === 10) {
+    if (this.props.counter === 10) {
       Alert = (
         <div className="alert alert-danger" role="alert">
           You can't add more answers
         </div>
       );
-    } else if (this.state.counter < 2) {
+    } else if (this.props.counter < 2) {
       Alert = (
         <div className="alert alert-warning" role="alert">
           Add at least 2 answers
@@ -135,8 +135,8 @@ export default class Create extends React.Component {
       Alert = null;
     }
     if (
-      this.state.disabled === true ||
-      this.state.question.value.length >= 81
+      this.props.disabled === true ||
+      this.props.question.value.length >= 81
     ) {
       AlertDisabled = (
         <div className="alert alert-danger" role="alert">
@@ -157,16 +157,16 @@ export default class Create extends React.Component {
               type="text"
               maxLength="81"
               className="form-control mb-3 mt-3 bg-warning"
-              onInput={this.updateQuestion}
-              value={this.state.question.value}
+              onInput={this.props.updateQuestion}
+              value={this.props.question.value}
               placeholder="Type a question"
             />
             <AnswersList
-              answers={this.state.answers}
-              deleteAnswer={this.deleteAnswer}
-              setUpdate={this.setUpdate}
+              answers={this.props.answers}
+              deleteAnswer={this.props.deleteAnswer}
+              setUpdate={this.props.setUpdate}
             ></AnswersList>
-            <form onSubmit={this.addAnswer}>
+            <form onSubmit={this.props.addAnswer}>
               <div className="input-group mb-3">
                 <input
                   type="text"
@@ -176,8 +176,8 @@ export default class Create extends React.Component {
                   placeholder="Type an answer"
                   aria-label="Type an answer"
                   aria-describedby="button-addon2"
-                  value={this.state.currentAnswer.value}
-                  onChange={this.handleInput}
+                  value={this.props.currentAnswer.value}
+                  onChange={this.props.handleInput}
                 />
                 <div className="input-group-append">
                   <button
@@ -195,12 +195,12 @@ export default class Create extends React.Component {
             {AlertDisabled}
             {Alert}
             <div className="possible-answers d-flex justify-content-between align-items-end">
-              <p className="m-0">{this.state.counter}/10 possible answers</p>
+              <p className="m-0">{this.props.counter}/10 possible answers</p>
               <button
                 className="btn btn-outline-secondary bg-danger text-white text-center pr-4 pl-4"
                 type="button"
                 value="reset"
-                onClick={this.reset}
+                onClick={this.props.reset}
               >
                 Reset
               </button>

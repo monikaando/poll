@@ -18,8 +18,8 @@ textarea::-webkit-scrollbar-thumb {
   outline: transparent;
 }
 textarea::-webkit-resizer {
-    border-width: 3px;
+    border-width: 2px;
     border-style: solid;
-    border-color: transparent rgba(17, 139, 158, 0.918) rgba(17, 139, 158, 0.918) transparent;
+    border-color: transparent rgba(201, 201, 201, 0.418)  rgba(201, 201, 201, 0.418) transparent;
     background-color: rgb(19,163,184);
   }

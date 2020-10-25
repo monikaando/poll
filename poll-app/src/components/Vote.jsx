@@ -1,7 +1,8 @@
 import React from "react";
 import "../styles/Vote.css";
 
-const Vote = () => {
+export default class Vote extends React.Component {
+  render(){
   return (
     <div className="vote-box d-flex flex-column justify-content-between">
       <div>
@@ -10,7 +11,7 @@ const Vote = () => {
       <div className="vote-context d-flex flex-column justify-content-between mt-4">
         <div>
           <div className="mb-4">
-            <h5>Question?</h5>
+            <h5>{this.props.question.value}</h5>
           </div>
           <div className="mt-4 pt-3">
             <div className="answer-box form-check">
@@ -146,6 +147,5 @@ const Vote = () => {
       </button>
     </div>
   );
+  }
 };
-
-export default Vote;

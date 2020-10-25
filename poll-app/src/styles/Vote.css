@@ -5,3 +5,6 @@
 .vote-context {
     height: 100%;
 }
+.answer-box {
+    height: 42px;
+}

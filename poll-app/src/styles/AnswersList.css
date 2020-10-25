@@ -20,6 +20,6 @@ textarea::-webkit-scrollbar-thumb {
 textarea::-webkit-resizer {
     border-width: 3px;
     border-style: solid;
-    border-color: transparent rgb(16, 138, 156) rgb(16, 138, 156) transparent;
+    border-color: transparent rgba(17, 139, 158, 0.918) rgba(17, 139, 158, 0.918) transparent;
     background-color: rgb(19,163,184);
   }

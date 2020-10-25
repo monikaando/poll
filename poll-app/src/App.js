@@ -18,6 +18,7 @@ class App extends React.Component {
       currentAnswer: {
         value: "",
         key: "",
+        votes: 0,
       },
     };
     this.handleInput = this.handleInput.bind(this);
@@ -27,6 +28,7 @@ class App extends React.Component {
     this.reset = this.reset.bind(this);
     this.updateQuestion = this.updateQuestion.bind(this);
     this.disableFields = this.disableFields.bind(this);
+    this.votesCount = this.votesCount.bind(this);
   }
 
   updateQuestion(e) {
@@ -100,6 +102,7 @@ class App extends React.Component {
       currentAnswer: {
         value: "",
         key: "",
+        votes: 0,
       },
     });
   }
@@ -116,29 +119,47 @@ class App extends React.Component {
       });
     }
   }
+
+  votesCount(key) {
+    const answers = this.state.answers;
+    answers.map((item) => {
+      if (item.key === key) {
+        this.setState({
+          currentAnswer: {
+            votes: this.state.currentAnswer.votes + 1,
+          },
+        });
+      }
+      return null;
+    });
+  }
   render() {
     return (
       <div className="app d-flex flex-column justify-content-between">
         <div className="d-flex pb-3 mt-3 mb-1 ml-5 mr-5 flex-row justify-content-between">
-          <Create 
-          question = {this.state.question}
-          updateQuestion={this.updateQuestion} 
-          answers = {this.state.answers}
-          counter = {this.state.cunter}
-          addAnswer = {this.addAnswer}
-          currentAnswer = {this.state.currentAnswer}
-          handleInput = {this.handleInput}
-          deleteAnswer = {this.deleteAnswer}
-          setUpdate = {this.setUpdate}
-          disabled = {this.state.disabled}
-          reset = {this.reset}
+          <Create
+            question={this.state.question}
+            updateQuestion={this.updateQuestion}
+            answers={this.state.answers}
+            counter={this.state.counter}
+            addAnswer={this.addAnswer}
+            currentAnswer={this.state.currentAnswer}
+            handleInput={this.handleInput}
+            deleteAnswer={this.deleteAnswer}
+            setUpdate={this.setUpdate}
+            disabled={this.state.disabled}
+            reset={this.reset}
           />
-          <Vote 
-          question = {this.state.question}
-          updateQuestion={this.updateQuestion} />
+          <Vote
+            question={this.state.question}
+            updateQuestion={this.updateQuestion}
+            answers={this.state.answers}
+            votes={this.state.currentAnswer.votes}
+            votesCount={this.votesCount}
+          />
           <Results />
         </div>
-        <div>
+        <div className="mt-5 pt-5">
           <Footer />
         </div>
       </div>
@@ -146,19 +167,3 @@ class App extends React.Component {
   }
 }
 export default App;
-// function App() {
-//   return (
-//     <div className="app d-flex flex-column justify-content-between" >
-//       <div className="d-flex pb-3 mt-3 mb-1 ml-5 mr-5 flex-row justify-content-between">
-//         <Create />
-//         <Vote />
-//         <Results />
-//       </div>
-//       <div>
-//         <Footer />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default App;

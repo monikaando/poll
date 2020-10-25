@@ -1,151 +1,36 @@
 import React from "react";
+import VoteList from "./VoteList";
 import "../styles/Vote.css";
 
 export default class Vote extends React.Component {
-  render(){
-  return (
-    <div className="vote-box d-flex flex-column justify-content-between">
-      <div>
-        <h2>Vote</h2>
-      </div>
-      <div className="vote-context d-flex flex-column justify-content-between mt-4">
+  render() {
+    return (
+      <div className="vote-box d-flex flex-column justify-content-between">
+      
         <div>
-          <div className="mb-4">
-            <h5>{this.props.question.value}</h5>
-          </div>
-          <div className="mt-4 pt-3">
-            <div className="answer-box form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" htmlFor="exampleRadios1">
-                Default radio
-              </label>
+          <h2>Vote</h2>
+        </div>
+        <div className="vote-context d-flex flex-column justify-content-between mt-3">
+          <div>
+            <div className="mb-4">
+              <h5>{this.props.question.value}</h5>
             </div>
-            <div className="answer-box form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" htmlFor="exampleRadios1">
-                Default radio
-              </label>
-            </div>
-            <div className="answer-box form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" htmlFor="exampleRadios1">
-                Default radio
-              </label>
-            </div>
-            <div className="answer-box form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" htmlFor="exampleRadios1">
-                Default radio
-              </label>
-            </div>
-            <div className="answer-box form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" htmlFor="exampleRadios1">
-                Default radio
-              </label>
-            </div>
-            <div className="answer-box form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" htmlFor="exampleRadios1">
-                Default radio
-              </label>
-            </div>
-            <div className="answer-box form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" htmlFor="exampleRadios1">
-                Default radio
-              </label>
-            </div>
-            <div className="answer-box form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" htmlFor="exampleRadios1">
-                Default radio
-              </label>
-            </div>
-            <div className="answer-box form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" htmlFor="exampleRadios1">
-                Default radio
-              </label>
-            </div>
-            <div className="answer-box form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" htmlFor="exampleRadios1">
-                Default radio
-              </label>
-            </div>
-
-            
+            <VoteList
+              answers={this.props.answers}
+              votesCount={this.props.votesCount}
+            ></VoteList>
           </div>
         </div>
+       
+        <div className="mb-2 align-self-end">
+        <button
+          className="btn btn-outline-secondary bg-info text-white text-center pr-5 pl-5"
+          type="button"
+        >
+          Vote
+        </button>
+        </div>
       </div>
-      <button
-        className="btn btn-outline-secondary bg-info text-white align-self-end text-center pr-5 pl-5"
-        type="button"
-      >
-        Vote
-      </button>
-    </div>
-  );
+    );
   }
-};
+}

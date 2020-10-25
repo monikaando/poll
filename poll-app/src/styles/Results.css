@@ -1,7 +1,10 @@
 .results-box {
-    height: 85vh;
+    height: 93vh;
     width: 30%;
 }
 .results-context {
     height: 100%;
+}
+.total-votes p {
+    font-size: 14px;
 }

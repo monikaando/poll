@@ -13,6 +13,7 @@ class App extends React.Component {
         value: "",
       },
       answers: [],
+      pickedAnswerId:0,
       counter: 0,
       disabled: false,
       currentAnswer: {
@@ -28,9 +29,12 @@ class App extends React.Component {
     this.reset = this.reset.bind(this);
     this.updateQuestion = this.updateQuestion.bind(this);
     this.disableFields = this.disableFields.bind(this);
-    this.votesCount = this.votesCount.bind(this);
+    this.radioOnChange = this.radioOnChange.bind(this);
+    // this.onVoteClick = this.onVoteClick.bind(this);
   }
-
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevState, this.state);
+  }
   updateQuestion(e) {
     const questionText = this.state.question.value.length;
     this.setState({
@@ -45,6 +49,7 @@ class App extends React.Component {
       currentAnswer: {
         value: e.target.value,
         key: Date.now(),
+        votes: 0,
       },
     });
   }
@@ -53,7 +58,11 @@ class App extends React.Component {
     const answers = this.state.answers;
     const newAnswer = this.state.currentAnswer;
     const text = this.state.currentAnswer.value.length;
-    if (newAnswer.value !== "" && newAnswer.value.trim().length !== 0 && answers.length < 10) {
+    if (
+      newAnswer.value !== "" &&
+      newAnswer.value.trim().length !== 0 &&
+      answers.length < 10
+    ) {
       const newAnswers = [...this.state.answers, newAnswer];
       this.setState({
         answers: newAnswers,
@@ -61,6 +70,7 @@ class App extends React.Component {
         currentAnswer: {
           value: "",
           key: "",
+          votes: 0,
         },
       });
     }
@@ -120,19 +130,17 @@ class App extends React.Component {
     }
   }
 
-  votesCount(key) {
-    const answers = this.state.answers;
-    answers.map((item) => {
-      if (item.key === key) {
-        this.setState({
-          currentAnswer: {
-            votes: this.state.currentAnswer.votes + 1,
-          },
-        });
-      }
-      return null;
-    });
+  radioOnChange(value) {
+    this.setState({
+      pickedAnswerId: value
+      })
+    
+      console.log(this.state.pickedAnswerId)
   }
+
+
+// addVote() {
+// }
   render() {
     return (
       <div className="app d-flex flex-column justify-content-between">
@@ -154,10 +162,15 @@ class App extends React.Component {
             question={this.state.question}
             updateQuestion={this.updateQuestion}
             answers={this.state.answers}
+            currentAnswer={this.state.currentAnswer}
             votes={this.state.currentAnswer.votes}
-            votesCount={this.votesCount}
+            radioOnChange={this.radioOnChange}
+           
+            
           />
-          <Results />
+          <Results 
+            votes={this.state.currentAnswer.votes}
+          />
         </div>
         <div className="mt-5 pt-5">
           <Footer />

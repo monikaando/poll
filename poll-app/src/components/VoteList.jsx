@@ -11,13 +11,18 @@ function VoteList(props) {
         <input
           className="form-check-input"
           type="radio"
-          id={item.key}
+          value={item.value}
+          checked={!!item.value}
           name="answer"
-          onChange={() => props.votesCount(item.key)}
-        />
-        <label className="form-check-label" htmlFor={item.key}>
-          {item.value}
-        </label>
+        //   onChange={(e) => {
+        //       props.radioOnChange(e.target.key);
+        //     }}
+          onChange={e => this.radioOnChange(e)}
+            
+        />{item.value}
+        {/* <label className="form-check-label" htmlFor={item.key}>
+          
+        </label> */}
       </div>
     );
   });

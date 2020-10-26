@@ -24,7 +24,7 @@ export default class Create extends React.Component {
       );
     } else {
       Alert = null;
-    }
+    };
     if (
       this.props.disabled === true ||
       this.props.question.value.length >= 81
@@ -36,11 +36,11 @@ export default class Create extends React.Component {
       );
     } else {
       AlertDisabled = null;
-    }
+    };
     if (
       (this.props.question.value.length > 0 &&
         this.props.question.value.trim().length === 0) ||
-      (this.props.currentAnswer.value.length > 0 &&
+      (this.props.currentAnswer.value && this.props.currentAnswer.value.length > 0 &&
       this.props.currentAnswer.value.trim().length === 0)
     ) {
       AlertSpaces = (

@@ -13,7 +13,7 @@ class App extends React.Component {
         value: "",
       },
       answers: [],
-      pickedAnswerId:0,
+      pickedAnswerId: '',
       counter: 0,
       disabled: false,
       currentAnswer: {
@@ -34,6 +34,7 @@ class App extends React.Component {
   }
   componentDidUpdate(prevProps, prevState) {
     console.log(prevState, this.state);
+    console.log(this.props.onVoteClick)
   }
   updateQuestion(e) {
     const questionText = this.state.question.value.length;
@@ -130,17 +131,15 @@ class App extends React.Component {
     }
   }
 
-  radioOnChange(value) {
-    this.setState({
-      pickedAnswerId: value
-      })
+
+  radioOnChange(e) {
+      this.setState({
+        pickedAnswerId: e.target.id
+        })
     
-      console.log(this.state.pickedAnswerId)
-  }
+        console.log(this.state.pickedAnswerId)
+    }
 
-
-// addVote() {
-// }
   render() {
     return (
       <div className="app d-flex flex-column justify-content-between">
@@ -165,7 +164,7 @@ class App extends React.Component {
             currentAnswer={this.state.currentAnswer}
             votes={this.state.currentAnswer.votes}
             radioOnChange={this.radioOnChange}
-           
+            onVoteClick={this.onVoteClick}
             
           />
           <Results 

@@ -25,16 +25,16 @@ export default class Vote extends React.Component {
        <p>key:_{this.props.currentAnswer.key}</p>
        <p>value:_{this.props.currentAnswer.value}</p>
        <p>votes:_{this.props.currentAnswer.votes}</p>
-       <p>current value is:_{this.props.pickedAnswer}</p>
+       <p>current value is:_{this.props.pickedAnswerId}</p>
        </div>
         <div className="mb-2 align-self-end">
-        <button
+        {/* <button
           className="btn btn-outline-secondary bg-info text-white text-center pr-5 pl-5"
           type="button"
-          onClick={this.props.radioOnChange}
+        //   onClick={this.props.onVoteClick}
         >
           Vote
-        </button>
+        </button> */}
         </div>
       </div>
     );

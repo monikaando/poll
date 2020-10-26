@@ -7,22 +7,18 @@ function VoteList(props) {
       <div
         className="answer-box form-check"
         key={item.key}
+
       >
         <input
           className="form-check-input"
-          type="radio"
+          type="checkbox"
+          id={item.key}
           value={item.value}
-          checked={!!item.value}
+          checked={false}
           name="answer"
-        //   onChange={(e) => {
-        //       props.radioOnChange(e.target.key);
-        //     }}
-          onChange={e => this.radioOnChange(e)}
-            
-        />{item.value}
-        {/* <label className="form-check-label" htmlFor={item.key}>
+          onChange={(e) => props.radioOnChange(e)} 
           
-        </label> */}
+        />{item.value} - {item.votes}
       </div>
     );
   });

@@ -29,8 +29,15 @@ class App extends React.Component {
     this.reset = this.reset.bind(this);
     this.updateQuestion = this.updateQuestion.bind(this);
     this.disableFields = this.disableFields.bind(this);
+    this.disableFields80chars = this.disableFields80chars.bind(this);
     this.radioOnChange = this.radioOnChange.bind(this);
     this.onVoteClick = this.onVoteClick.bind(this);
+    this.disableVoteButton = this.disableVoteButton.bind(this);
+  }
+  componentDidMount(prevState) {
+    console.log(prevState, this.state);
+    const questionText = this.state.question.value.length;
+    this.disableFields(questionText < 1);
   }
   componentDidUpdate(prevProps, prevState) {
     console.log(prevState, this.state);
@@ -43,7 +50,9 @@ class App extends React.Component {
         value: e.target.value,
       },
     });
-    this.disableFields(questionText);
+    this.disableFields80chars(questionText >= 81);
+    this.disableFields(questionText < 2);
+    this.disableVoteButton();
   }
   handleInput(e) {
     this.setState({
@@ -75,7 +84,8 @@ class App extends React.Component {
         },
       });
     }
-    this.disableFields(text);
+    this.disableFields80chars(text >= 81);
+    this.disableVoteButton();
   }
 
   deleteAnswer(key) {
@@ -93,7 +103,7 @@ class App extends React.Component {
     answers.map((item) => {
       if (item.key === key) {
         item.value = value;
-        this.disableFields(item.value.length);
+        this.disableFields80chars(item.value.length >= 81);
       }
       return null;
     });
@@ -117,8 +127,15 @@ class App extends React.Component {
       },
     });
   }
-  disableFields(value) {
-    if (value >= 81) {
+  disableFields(conditional) {
+    if (conditional) {
+      document.getElementById("add-answer-field").disabled = true;
+    } else {
+      document.getElementById("add-answer-field").disabled = false;
+    }
+  }
+  disableFields80chars(conditional) {
+    if (conditional) {
       document.getElementById("add-answer-field").disabled = true;
       this.setState({
         disabled: true,
@@ -136,7 +153,17 @@ class App extends React.Component {
       pickedAnswerId: parseInt(e.target.id),
     });
   }
-  onVoteClick(){
+  disableVoteButton(){
+    if(this.state.answers.length < 1){
+      document.getElementById("btnVote").disabled = true
+    }
+    else {
+      document.getElementById("btnVote").disabled = false
+    }
+  }
+  onVoteClick() {
+    //function need to have at least 2 answers to make button active[DOM manipulation]
+    
     //function should find by pickedAnswerId the proper answer and add +1 in votes to it
   }
 

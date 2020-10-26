@@ -19,15 +19,14 @@ export default class Create extends React.Component {
     } else if (this.props.counter < 2) {
       Alert = (
         <div className="alert alert-warning" role="alert">
-          Add at least 2 answers
+          Add question and at least 2 answers
         </div>
       );
     } else {
       Alert = null;
     };
     if (
-      this.props.disabled === true ||
-      this.props.question.value.length >= 81
+      this.props.disabled === true || this.props.question.value.length >= 82
     ) {
       AlertDisabled = (
         <div className="alert alert-danger" role="alert">

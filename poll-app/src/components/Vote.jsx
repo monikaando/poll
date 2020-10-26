@@ -26,6 +26,7 @@ export default class Vote extends React.Component {
         <div className="mb-2 align-self-end">
         <button
           className="btn btn-outline-secondary bg-info text-white text-center pr-5 pl-5"
+          id="btnVote"
           type="button"
           onClick={this.props.onVoteClick}
         >

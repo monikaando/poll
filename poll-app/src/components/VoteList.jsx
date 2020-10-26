@@ -7,17 +7,14 @@ function VoteList(props) {
       <div
         className="answer-box form-check"
         key={item.key}
-
       >
         <input
-          className="form-check-input"
-          type="checkbox"
+          className="radio form-check-input"
+          type="radio"
           id={item.key}
           value={item.value}
-          checked={false}
           name="answer"
           onChange={(e) => props.radioOnChange(e)} 
-          
         />{item.value} - {item.votes}
       </div>
     );

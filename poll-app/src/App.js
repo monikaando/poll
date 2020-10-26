@@ -30,11 +30,11 @@ class App extends React.Component {
     this.updateQuestion = this.updateQuestion.bind(this);
     this.disableFields = this.disableFields.bind(this);
     this.radioOnChange = this.radioOnChange.bind(this);
-    // this.onVoteClick = this.onVoteClick.bind(this);
+    this.onVoteClick = this.onVoteClick.bind(this);
   }
   componentDidUpdate(prevProps, prevState) {
     console.log(prevState, this.state);
-    console.log(this.props.onVoteClick)
+    console.log(this.state.pickedAnswerId);
   }
   updateQuestion(e) {
     const questionText = this.state.question.value.length;
@@ -131,12 +131,14 @@ class App extends React.Component {
     }
   }
 
-
   radioOnChange(e) {
-      this.setState({
-        pickedAnswerId: parseInt(e.target.id)
-        })
-        }
+    this.setState({
+      pickedAnswerId: parseInt(e.target.id),
+    });
+  }
+  onVoteClick(){
+    //function should find by pickedAnswerId the proper answer and add +1 in votes to it
+  }
 
   render() {
     return (
@@ -157,17 +159,11 @@ class App extends React.Component {
           />
           <Vote
             question={this.state.question}
-            updateQuestion={this.updateQuestion}
             answers={this.state.answers}
-            currentAnswer={this.state.currentAnswer}
-            votes={this.state.currentAnswer.votes}
             radioOnChange={this.radioOnChange}
             onVoteClick={this.onVoteClick}
-            
           />
-          <Results 
-            votes={this.state.currentAnswer.votes}
-          />
+          <Results votes={this.state.currentAnswer.votes} />
         </div>
         <div className="mt-5 pt-5">
           <Footer />

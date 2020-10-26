@@ -13,7 +13,7 @@ class App extends React.Component {
         value: "",
       },
       answers: [],
-      pickedAnswerId: '',
+      pickedAnswerId: 0,
       counter: 0,
       disabled: false,
       currentAnswer: {
@@ -134,11 +134,9 @@ class App extends React.Component {
 
   radioOnChange(e) {
       this.setState({
-        pickedAnswerId: e.target.id
+        pickedAnswerId: parseInt(e.target.id)
         })
-    
-        console.log(this.state.pickedAnswerId)
-    }
+        }
 
   render() {
     return (

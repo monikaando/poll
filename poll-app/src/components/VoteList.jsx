@@ -15,7 +15,7 @@ function VoteList(props) {
           value={item.value}
           name="answer"
           onChange={(e) => props.radioOnChange(e)} 
-        />{item.value} - {item.votes}
+        />{item.value}
       </div>
     );
   });

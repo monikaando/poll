@@ -21,7 +21,28 @@ class App extends React.Component {
         key: "",
         votes: 0,
       },
-      totalVotes: 0
+      totalVotes: 0,
+      chartData: {
+        labels: [],
+        datasets: [
+          {
+            label: "Votes",
+            data: [],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.6)",
+              "rgba(54, 162, 132, 0.6)",
+              "rgba(255, 206, 132, 0.6)",
+              "rgba(75, 192, 132, 0.6)",
+              "rgba(153, 102, 112, 0.6)",
+              "rgba(255, 159, 102, 0.6)",
+              "rgba(255, 99, 152, 0.6)",
+              "rgba(54, 162, 132, 0.6)",
+              "rgba(255, 216, 132, 0.6)",
+              "rgba(75, 200, 121, 0.6)",
+            ],
+          },
+        ],
+      },
     };
     this.handleInput = this.handleInput.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
@@ -34,6 +55,7 @@ class App extends React.Component {
     this.radioOnChange = this.radioOnChange.bind(this);
     this.onVoteClick = this.onVoteClick.bind(this);
     this.disableVoteButton = this.disableVoteButton.bind(this);
+    this.createChart = this.createChart.bind(this);
   }
   componentDidMount(prevState) {
     console.log(prevState, this.state);
@@ -88,6 +110,7 @@ class App extends React.Component {
     }
     this.disableFields80chars(text >= 81);
     this.disableVoteButton();
+    this.createChart();
   }
 
   deleteAnswer(key) {
@@ -177,8 +200,27 @@ class App extends React.Component {
           totalVotes: this.state.totalVotes +1,
           answers: answers,
         });
+    this.createChart();
   }
-
+  createChart() {
+    const answers = this.state.answers;
+    if(this.state.answers.length > 0){
+      const answersLabels = answers.map((x) => x.value);
+      const answersVotes = answers.map((x) => x.votes);
+      this.setState({
+        chartData: {
+          labels: answersLabels,
+          datasets: [
+            {
+              label: "Votes",
+              data: answersVotes,
+            },
+          ],
+        },
+      });
+    }
+ 
+  }
   render() {
     return (
       <div className="app d-flex flex-column justify-content-between">
@@ -202,7 +244,11 @@ class App extends React.Component {
             radioOnChange={this.radioOnChange}
             onVoteClick={this.onVoteClick}
           />
-          <Results votes={this.state.totalVotes} />
+          <Results 
+          votes={this.state.totalVotes}
+          chartData={this.state.chartData}
+          question={this.state.question}
+           />
         </div>
         <div className="mt-5 pt-5">
           <Footer />

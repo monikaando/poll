@@ -38,6 +38,7 @@ class App extends React.Component {
     console.log(prevState, this.state);
     const questionText = this.state.question.value.length;
     this.disableFields(questionText < 1);
+    this.disableVoteButton()
   }
   componentDidUpdate(prevProps, prevState) {
     console.log(prevState, this.state);
@@ -162,9 +163,17 @@ class App extends React.Component {
     }
   }
   onVoteClick() {
-    //function need to have at least 2 answers to make button active[DOM manipulation]
-    
-    //function should find by pickedAnswerId the proper answer and add +1 in votes to it
+    const answers = this.state.answers;
+    const id = this.state.pickedAnswerId;
+    answers.map((item) => {
+      if(item.key === id) {
+        item.votes += 1;
+      }
+      return null
+    })
+    this.setState({
+          answers: answers,
+        });
   }
 
   render() {

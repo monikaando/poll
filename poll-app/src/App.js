@@ -29,16 +29,17 @@ class App extends React.Component {
             label: "Votes",
             data: [],
             backgroundColor: [
-              "rgba(255, 99, 132, 0.6)",
-              "rgba(54, 162, 132, 0.6)",
-              "rgba(255, 206, 132, 0.6)",
-              "rgba(75, 192, 132, 0.6)",
-              "rgba(153, 102, 112, 0.6)",
-              "rgba(255, 159, 102, 0.6)",
-              "rgba(255, 99, 152, 0.6)",
-              "rgba(54, 162, 132, 0.6)",
-              "rgba(255, 216, 132, 0.6)",
-              "rgba(75, 200, 121, 0.6)",
+              "rgba(255, 235, 59, 0.6)",
+              "rgba(255, 152, 0, 0.6)",
+              "rgba(244, 67, 54, 0.6)",
+              "rgba(233, 30, 99, 0.6)",
+              "rgba(76, 175, 80, 0.6)",
+              "rgba(0, 150, 136, 0.6)",
+              "rgba(0, 188, 212, 0.6)",
+              "rgba(3, 169, 244, 0.6)",
+              "rgba(156, 39, 176, 0.6)",
+              "rgba(63, 81, 181, 0.6)",
+              "rgba(0, 37, 127, 0.6)",
             ],
           },
         ],
@@ -61,12 +62,13 @@ class App extends React.Component {
     console.log(prevState, this.state);
     const questionText = this.state.question.value.length;
     this.disableFields(questionText < 1);
-    this.disableVoteButton()
-    
+    this.disableVoteButton();
+    this.createChart();
+
   }
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevState) {
     console.log(prevState, this.state);
-    this.disableVoteButton()
+    this.disableVoteButton();
   }
   updateQuestion(e) {
     const questionText = this.state.question.value.length;
@@ -77,6 +79,7 @@ class App extends React.Component {
     });
     this.disableFields80chars(questionText >= 81);
     this.disableFields(questionText < 2);
+    this.createChart();
   }
   handleInput(e) {
     this.setState({
@@ -112,7 +115,6 @@ class App extends React.Component {
     this.disableVoteButton();
     this.createChart();
   }
-
   deleteAnswer(key) {
     const filteredAnswers = this.state.answers.filter(
       (item) => item.key !== key
@@ -121,8 +123,8 @@ class App extends React.Component {
       answers: filteredAnswers,
       counter: this.state.counter - 1,
     });
+    this.createChart();
   }
-
   setUpdate(value, key) {
     const answers = this.state.answers;
     answers.map((item) => {
@@ -136,6 +138,7 @@ class App extends React.Component {
     this.setState({
       answers: answers,
     });
+    this.createChart();
   }
   reset() {
     this.setState({
@@ -143,6 +146,7 @@ class App extends React.Component {
         value: "",
       },
       answers: [],
+      pickedAnswerId: 0,
       counter: 0,
       disabled: false,
       currentAnswer: {
@@ -150,7 +154,15 @@ class App extends React.Component {
         key: "",
         votes: 0,
       },
-      totalVotes: 0
+      totalVotes: 0,
+      chartData: {
+        labels: [],
+        datasets: [
+          {
+            data: [],
+          },
+        ],
+      },
     });
   }
   disableFields(conditional) {
@@ -173,38 +185,36 @@ class App extends React.Component {
       });
     }
   }
-
   radioOnChange(e) {
     this.setState({
       pickedAnswerId: parseInt(e.target.id),
     });
   }
-  disableVoteButton(){
-    if(this.state.answers.length < 1 || this.state.pickedAnswerId === 0){
-      document.getElementById("btnVote").disabled = true
-    }
-    else {
-      document.getElementById("btnVote").disabled = false
+  disableVoteButton() {
+    if (this.state.answers.length < 1 || this.state.pickedAnswerId === 0) {
+      document.getElementById("btnVote").disabled = true;
+    } else {
+      document.getElementById("btnVote").disabled = false;
     }
   }
   onVoteClick() {
     const answers = this.state.answers;
     const id = this.state.pickedAnswerId;
     answers.map((item) => {
-      if(item.key === id) {
+      if (item.key === id) {
         item.votes += 1;
       }
-      return null
-    })
+      return null;
+    });
     this.setState({
-          totalVotes: this.state.totalVotes +1,
-          answers: answers,
-        });
+      totalVotes: this.state.totalVotes + 1,
+      answers: answers,
+    });
     this.createChart();
   }
   createChart() {
     const answers = this.state.answers;
-    if(this.state.answers.length > 0){
+    if (this.state.answers.length > 0) {
       const answersLabels = answers.map((x) => x.value);
       const answersVotes = answers.map((x) => x.votes);
       this.setState({
@@ -219,7 +229,6 @@ class App extends React.Component {
         },
       });
     }
- 
   }
   render() {
     return (
@@ -244,11 +253,11 @@ class App extends React.Component {
             radioOnChange={this.radioOnChange}
             onVoteClick={this.onVoteClick}
           />
-          <Results 
-          votes={this.state.totalVotes}
-          chartData={this.state.chartData}
-          question={this.state.question}
-           />
+          <Results
+            votes={this.state.totalVotes}
+            chartData={this.state.chartData}
+            question={this.state.question}
+          />
         </div>
         <div className="mt-5 pt-5">
           <Footer />

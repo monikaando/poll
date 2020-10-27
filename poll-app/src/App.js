@@ -21,6 +21,7 @@ class App extends React.Component {
         key: "",
         votes: 0,
       },
+      totalVotes: 0
     };
     this.handleInput = this.handleInput.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
@@ -39,10 +40,11 @@ class App extends React.Component {
     const questionText = this.state.question.value.length;
     this.disableFields(questionText < 1);
     this.disableVoteButton()
+    
   }
   componentDidUpdate(prevProps, prevState) {
     console.log(prevState, this.state);
-    console.log(this.state.pickedAnswerId);
+    this.disableVoteButton()
   }
   updateQuestion(e) {
     const questionText = this.state.question.value.length;
@@ -53,7 +55,6 @@ class App extends React.Component {
     });
     this.disableFields80chars(questionText >= 81);
     this.disableFields(questionText < 2);
-    this.disableVoteButton();
   }
   handleInput(e) {
     this.setState({
@@ -126,6 +127,7 @@ class App extends React.Component {
         key: "",
         votes: 0,
       },
+      totalVotes: 0
     });
   }
   disableFields(conditional) {
@@ -155,7 +157,7 @@ class App extends React.Component {
     });
   }
   disableVoteButton(){
-    if(this.state.answers.length < 1){
+    if(this.state.answers.length < 1 || this.state.pickedAnswerId === 0){
       document.getElementById("btnVote").disabled = true
     }
     else {
@@ -172,6 +174,7 @@ class App extends React.Component {
       return null
     })
     this.setState({
+          totalVotes: this.state.totalVotes +1,
           answers: answers,
         });
   }
@@ -199,7 +202,7 @@ class App extends React.Component {
             radioOnChange={this.radioOnChange}
             onVoteClick={this.onVoteClick}
           />
-          <Results votes={this.state.currentAnswer.votes} />
+          <Results votes={this.state.totalVotes} />
         </div>
         <div className="mt-5 pt-5">
           <Footer />

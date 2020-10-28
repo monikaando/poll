@@ -5,7 +5,7 @@ import "../styles/Vote.css";
 export default class Vote extends React.Component {
   render() {
     return (
-      <div className="vote-box d-flex flex-column justify-content-between">
+      <div className="vote-box d-flex flex-column justify-content-between ml-md-5 mr-md-5">
       
         <div>
           <h2>Vote</h2>

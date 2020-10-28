@@ -1,10 +1,12 @@
-.vote-box {
+@media screen and (min-width: 768px) {
+  .vote-box {
     height: 92vh;
-    width: 28%;
-}
-.vote-context {
+  }
+  .vote-context {
     height: 100%;
-}
-.answer-box {
+    width: auto;
+  }
+  .answer-box {
     height: 42px;
+  }
 }

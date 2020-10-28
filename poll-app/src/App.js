@@ -64,12 +64,13 @@ class App extends React.Component {
     this.disableFields(questionText < 1);
     this.disableVoteButton();
     this.createChart();
-
+   
   }
   componentDidUpdate(prevState) {
     console.log(prevState, this.state);
     this.disableVoteButton();
   }
+
   updateQuestion(e) {
     const questionText = this.state.question.value.length;
     this.setState({
@@ -162,7 +163,7 @@ class App extends React.Component {
             data: [],
           },
         ],
-      },
+      },  
     });
   }
   disableFields(conditional) {
@@ -189,6 +190,7 @@ class App extends React.Component {
     this.setState({
       pickedAnswerId: parseInt(e.target.id),
     });
+    this.createChart();
   }
   disableVoteButton() {
     if (this.state.answers.length < 1 || this.state.pickedAnswerId === 0) {
@@ -230,10 +232,11 @@ class App extends React.Component {
       });
     }
   }
+  
   render() {
     return (
       <div className="app d-flex flex-column justify-content-between">
-        <div className="d-flex pb-3 mt-3 mb-1 ml-5 mr-5 flex-row justify-content-between">
+        <div className="d-flex d-md-flex pb-3 mt-3 mb-1 ml-3 mr-2 ml-md-5 mr-md-5 flex-column flex-md-row">
           <Create
             question={this.state.question}
             updateQuestion={this.updateQuestion}

@@ -59,59 +59,61 @@ export default class Create extends React.Component {
         </div>
         <div className="create-context d-flex flex-column justify-content-between">
           <div>
-            <input
-              type="text"
-              maxLength="81"
-              className="form-control mb-3 mt-3 bg-warning"
-              onInput={this.props.updateQuestion}
-              value={this.props.question.value}
-              placeholder="Type a question"
-            />
-            <AnswersList
-              answers={this.props.answers}
-              deleteAnswer={this.props.deleteAnswer}
-              setUpdate={this.props.setUpdate}
-            ></AnswersList>
-            <form onSubmit={this.props.addAnswer}>
-              <div className="input-group mb-3">
-                <input
-                  type="text"
-                  maxLength="80"
-                  className="form-control bg-light text-dark"
-                  id="add-answer-field"
-                  placeholder="Type an answer"
-                  aria-label="Type an answer"
-                  aria-describedby="button-addon2"
-                  value={this.props.currentAnswer.value}
-                  onChange={this.props.handleInput}
-                />
-                <div className="input-group-append">
-                  <button
-                    className="btn btn-outline-secondary bg-info text-white"
-                    type="submit"
-                    id="button-addon2"
-                  >
-                    Add
-                  </button>
+            <div>
+              <input
+                type="text"
+                maxLength="81"
+                className="form-control mb-3 mt-3 bg-warning"
+                onInput={this.props.updateQuestion}
+                value={this.props.question.value}
+                placeholder="Type a question"
+              />
+              <AnswersList
+                answers={this.props.answers}
+                deleteAnswer={this.props.deleteAnswer}
+                setUpdate={this.props.setUpdate}
+              ></AnswersList>
+              <form onSubmit={this.props.addAnswer}>
+                <div className="input-group mb-3">
+                  <input
+                    type="text"
+                    maxLength="80"
+                    className="form-control bg-light text-dark"
+                    id="add-answer-field"
+                    placeholder="Type an answer"
+                    aria-label="Type an answer"
+                    aria-describedby="button-addon2"
+                    value={this.props.currentAnswer.value}
+                    onChange={this.props.handleInput}
+                  />
+                  <div className="input-group-append">
+                    <button
+                      className="btn btn-outline-secondary bg-info text-white"
+                      type="submit"
+                      id="button-addon2"
+                    >
+                      Add
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </div>
-          <div>
-            {AlertSpaces}
-            {AlertDisabled}
-            {Alert}
-            <div className="possible-answers d-flex d-md-flex flex-column flex-md-row justify-content-between md-align-items-end">
-              <p className="m-0">{this.props.counter}/10 possible answers</p>
-              <button
-                className="btn btn-outline-secondary bg-danger text-white text-center pr-4 pl-4 mt-3 mt-md-0"
-                type="button"
-                value="reset"
-                onClick={this.props.reset}
-              >
-                Reset
-              </button>
+              </form>
             </div>
+            <div>
+              {AlertSpaces}
+              {AlertDisabled}
+              {Alert}
+            </div>
+          </div>
+          <div className="possible-answers d-flex d-md-flex flex-column flex-md-row justify-content-between align-items-end">
+            <p className="m-0">{this.props.counter}/10 possible answers</p>
+            <button
+              className="btn btn-outline-secondary bg-danger text-white text-center pr-4 pl-4 mt-3 mt-md-0"
+              type="button"
+              value="reset"
+              onClick={this.props.reset}
+            >
+              Reset
+            </button>
           </div>
         </div>
       </div>

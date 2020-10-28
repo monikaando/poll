@@ -24,7 +24,8 @@ Voting app with a column chart
     6) I took care to keep the code is clean and readable.
     7) For images I used Cloudinary.
     8) For styling I used Bootstrap and CSS.
-    9) I added a favicon and the title for the website.
+    9) For animations I used React Flip Move
+    10) I added a favicon and the title for the website.
 ## Stack
     React, Chart.js, Bootstrap
 

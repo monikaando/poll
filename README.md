@@ -73,32 +73,21 @@ Click a <a href="https://youtu.be/SOFQ6ZrYIBA"><b>video</b></a> and see how Poll
 
 <b>Desktop version:</b>
 
-<div>
+<br><br>
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603906798/PollApp/PollApp-1.png" />
-</div>
 <br><br>
-
-<div>
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603906796/PollApp/PollApp-2.png" />
-</div>
 <br><br>
-<div style="display: flex; justify-content: center">
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603906794/PollApp/PollApp-3.png" />
-</div>
 <br><br>
 
 <b>Mobile version:</b>
-<div style="width: 20%">
-<img src="https://res.cloudinary.com/mokaweb/image/upload/v1603913990/PollApp/PollApp-mob1.png" />
-</div>
 <br><br>
-<div style="width: 20%">
-<img src="https://res.cloudinary.com/mokaweb/image/upload/v1603913990/PollApp/PollApp-mob2.png" />
-</div>
+<img src="https://res.cloudinary.com/mokaweb/image/upload/v1603915143/PollApp/Poll-app-mobile1.png" />
 <br><br>
-<div style="width: 20%">
-<img src="https://res.cloudinary.com/mokaweb/image/upload/v1603913990/PollApp/PollApp-mob3.png" />
-</div>
+<img src="https://res.cloudinary.com/mokaweb/image/upload/v1603915143/PollApp/Poll-app-mobile2.png" />
+<br><br>
+<img src="https://res.cloudinary.com/mokaweb/image/upload/v1603915143/PollApp/Poll-app-mobile3.png" />
 <br><br>
 
 ## Contact

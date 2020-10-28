@@ -37,13 +37,13 @@ Voting app with a column chart
     - update answers
     - delete answers
     - check how many possible answers left
-    - reset the whole application by clicking "Reset" button.
+    - reset the whole application by clicking the "Reset" button.
     - see alerts when something is not allowed to do.
 
     User is not allowed to:
-    - add answer when title is not provided (title should have at least 3 characters)
+    - add answer when the title is not provided (title should have at least 3 characters)
     - provide only spaces in input fields
-    - add answer with an emply value
+    - add answer with an empty value
     - add more than 80 characters (in question and answers)
    
 ## Vote
@@ -62,9 +62,8 @@ Voting app with a column chart
     User can:
     - see the question
     - see the column chart with labels and number of votes 
-    - observe how chart is dynamically changing
-    - see number of total votes
-    
+    - observe how the chart is dynamically changing
+    - see the number of total votes
         
 ## Footer
     An additional element with the link to my portfolio.

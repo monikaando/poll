@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/poll/static/css/main.803a8389.chunk.css",
+    "main.css": "/poll/static/css/main.8cdb4138.chunk.css",
     "main.js": "/poll/static/js/main.183b8201.chunk.js",
     "main.js.map": "/poll/static/js/main.183b8201.chunk.js.map",
     "runtime-main.js": "/poll/static/js/runtime-main.8106ff49.js",
@@ -9,17 +9,17 @@
     "static/js/2.d524bb56.chunk.js": "/poll/static/js/2.d524bb56.chunk.js",
     "static/js/2.d524bb56.chunk.js.map": "/poll/static/js/2.d524bb56.chunk.js.map",
     "index.html": "/poll/index.html",
-    "precache-manifest.3533780dca338b226235bd57d4e33b9c.js": "/poll/precache-manifest.3533780dca338b226235bd57d4e33b9c.js",
+    "precache-manifest.0ea5ef413f26ab23f1d5c95f7f038045.js": "/poll/precache-manifest.0ea5ef413f26ab23f1d5c95f7f038045.js",
     "service-worker.js": "/poll/service-worker.js",
     "static/css/2.2a86faee.chunk.css.map": "/poll/static/css/2.2a86faee.chunk.css.map",
-    "static/css/main.803a8389.chunk.css.map": "/poll/static/css/main.803a8389.chunk.css.map",
+    "static/css/main.8cdb4138.chunk.css.map": "/poll/static/css/main.8cdb4138.chunk.css.map",
     "static/js/2.d524bb56.chunk.js.LICENSE.txt": "/poll/static/js/2.d524bb56.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8106ff49.js",
     "static/css/2.2a86faee.chunk.css",
     "static/js/2.d524bb56.chunk.js",
-    "static/css/main.803a8389.chunk.css",
+    "static/css/main.8cdb4138.chunk.css",
     "static/js/main.183b8201.chunk.js"
   ]
 }

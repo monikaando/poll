@@ -58,15 +58,13 @@ class App extends React.Component {
     this.disableVoteButton = this.disableVoteButton.bind(this);
     this.createChart = this.createChart.bind(this);
   }
-  componentDidMount(prevState) {
-    console.log(prevState, this.state);
+  componentDidMount() {
     const questionText = this.state.question.value.length;
     this.disableFields(questionText < 1);
     this.disableVoteButton();
     this.createChart();
   }
-  componentDidUpdate(prevState) {
-    console.log(prevState, this.state);
+  componentDidUpdate() {
     this.disableVoteButton();
   }
 

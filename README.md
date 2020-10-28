@@ -88,15 +88,15 @@ Click a <a href="https://youtu.be/SOFQ6ZrYIBA"><b>video</b></a> and see how Poll
 <br><br>
 
 <b>Mobile version:</b>
-<div style="width: 50px">
+<div style="width: 20%">
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603913990/PollApp/PollApp-mob1.png" />
 </div>
 <br><br>
-<div style="width: 50px">
+<div style="width: 20%">
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603913990/PollApp/PollApp-mob2.png" />
 </div>
 <br><br>
-<div>
+<div style="width: 20%">
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603913990/PollApp/PollApp-mob3.png" />
 </div>
 <br><br>

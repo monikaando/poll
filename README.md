@@ -18,7 +18,8 @@ Voting app with a column chart
 ## General info
     1) Application is built in frontend without backend interactions.
     2) The application is a single page application.
-    3) When something changes the application is automatically updated (User can see changes in real time). 
+    3) When something changes the application is automatically updated
+       (User can see changes in real time). 
     4) I made the application by using React and Chart.js
     5) The whole application is responsive.
     6) I took care to keep the code is clean and readable.

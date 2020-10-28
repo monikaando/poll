@@ -76,29 +76,30 @@ Click a <a href="https://youtu.be/SOFQ6ZrYIBA"><b>video</b></a> and see how Poll
 <div style="display: flex; justify-content: center">
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603906798/PollApp/PollApp-1.png" />
 </div>
+<br><br>
 
 <div style="display: flex; justify-content: center">
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603906796/PollApp/PollApp-2.png" />
 </div>
-
+<br><br>
 <div style="display: flex; justify-content: center">
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603906794/PollApp/PollApp-3.png" />
 </div>
-
+<br><br>
 
 <b>Mobile version:</b>
 <div style="display: flex; justify-content: center; width: 100px">
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603913990/PollApp/PollApp-mob1.png" />
 </div>
-
+<br><br>
 <div style="display: flex; justify-content: center; width: 200px">
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603913990/PollApp/PollApp-mob2.png" />
 </div>
-
+<br><br>
 <div>
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603913990/PollApp/PollApp-mob3.png" />
 </div>
-
+<br><br>
 
 ## Contact
-    Created by Monika Swidzinska
+Created by <a href="https://monikaswidzinska.netlify.app">Monika Swidzinska</a>

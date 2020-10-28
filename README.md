@@ -72,7 +72,6 @@ Voting app with a column chart
 Click a <a href="https://youtu.be/SOFQ6ZrYIBA"><b>video</b></a> and see how Poll App works.
 
 <b>Desktop version:</b>
-
 <br><br>
 <img src="https://res.cloudinary.com/mokaweb/image/upload/v1603906798/PollApp/PollApp-1.png" />
 <br><br>

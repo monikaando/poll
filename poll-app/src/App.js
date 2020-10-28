@@ -64,7 +64,6 @@ class App extends React.Component {
     this.disableFields(questionText < 1);
     this.disableVoteButton();
     this.createChart();
-   
   }
   componentDidUpdate(prevState) {
     console.log(prevState, this.state);
@@ -163,7 +162,7 @@ class App extends React.Component {
             data: [],
           },
         ],
-      },  
+      },
     });
   }
   disableFields(conditional) {
@@ -232,7 +231,7 @@ class App extends React.Component {
       });
     }
   }
-  
+
   render() {
     return (
       <div className="app d-flex flex-column justify-content-between">

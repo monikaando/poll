@@ -24,9 +24,10 @@ export default class Create extends React.Component {
       );
     } else {
       Alert = null;
-    };
+    }
     if (
-      this.props.disabled === true || this.props.question.value.length >= 82
+      this.props.disabled === true ||
+      this.props.question.value.length >= 82
     ) {
       AlertDisabled = (
         <div className="alert alert-danger" role="alert">
@@ -35,12 +36,13 @@ export default class Create extends React.Component {
       );
     } else {
       AlertDisabled = null;
-    };
+    }
     if (
       (this.props.question.value.length > 0 &&
         this.props.question.value.trim().length === 0) ||
-      (this.props.currentAnswer.value && this.props.currentAnswer.value.length > 0 &&
-      this.props.currentAnswer.value.trim().length === 0)
+      (this.props.currentAnswer.value &&
+        this.props.currentAnswer.value.length > 0 &&
+        this.props.currentAnswer.value.trim().length === 0)
     ) {
       AlertSpaces = (
         <div className="alert alert-danger" role="alert">

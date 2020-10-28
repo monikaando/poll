@@ -1,3 +1,6 @@
+.btn-vote button {
+  width: 100%;
+}
 @media screen and (min-width: 768px) {
   .vote-box {
     height: 92vh;

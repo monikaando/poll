@@ -1,12 +1,12 @@
 .possible-answers p {
-    font-size: 14px;
+  font-size: 14px;
 }
-@media screen and (min-width: 768px){ 
-        .create-box {
-            height: 85vh;
-            width: 25%;
-        }
-        .create-context {
-            height: 100%;
-        }
-    }
+@media screen and (min-width: 768px) {
+  .create-box {
+    height: 85vh;
+    width: 25%;
+  }
+  .create-context {
+    height: 100%;
+  }
+}

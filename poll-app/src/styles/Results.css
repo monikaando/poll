@@ -1,11 +1,9 @@
 .total-votes p {
   font-size: 14px;
 }
-
 @media screen and (min-width: 768px) {
   .results-box {
     height: 92vh;
     width: 40%;
-
   }
 }

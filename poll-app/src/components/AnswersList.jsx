@@ -11,17 +11,17 @@ function AnswersList(props) {
         className="list d-flex justify-content-between align-items-center bg-info border border-light rounded mb-2"
         key={item.key}
       >
-          <textarea
-            className="pl-3 mb-1 bg-transparent text-white border-0"
-            type="text"
-            wrap="soft"
-            maxLength="81"
-            id={item.key}
-            value={item.value}
-            onChange={(e) => {
-              props.setUpdate(e.target.value, item.key);
-            }}
-          ></textarea>
+        <textarea
+          className="pl-3 mb-1 bg-transparent text-white border-0"
+          type="text"
+          wrap="soft"
+          maxLength="81"
+          id={item.key}
+          value={item.value}
+          onChange={(e) => {
+            props.setUpdate(e.target.value, item.key);
+          }}
+        ></textarea>
         <span className="pr-2">
           <FontAwesomeIcon
             type="button"

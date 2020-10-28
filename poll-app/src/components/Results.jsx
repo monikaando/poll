@@ -6,14 +6,14 @@ export default class Results extends React.Component {
   render() {
     return (
       <div className="results-box d-flex flex-column justify-content-between mt-5 mt-md-0">
-       <div>
-        <h2>Results</h2>
-        <div className="mt-4">
-          <h5>{this.props.question.value}</h5>
-        </div>
+        <div>
+          <h2>Results</h2>
+          <div className="mt-4">
+            <h5>{this.props.question.value}</h5>
+          </div>
         </div>
         <div className="chart">
-            <Bar
+          <Bar
             data={this.props.chartData}
             height={335}
             options={{

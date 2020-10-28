@@ -99,10 +99,10 @@ export default class Create extends React.Component {
             {AlertSpaces}
             {AlertDisabled}
             {Alert}
-            <div className="possible-answers d-flex justify-content-between align-items-end">
+            <div className="possible-answers d-flex d-md-flex flex-column flex-md-row justify-content-between md-align-items-end">
               <p className="m-0">{this.props.counter}/10 possible answers</p>
               <button
-                className="btn btn-outline-secondary bg-danger text-white text-center pr-4 pl-4"
+                className="btn btn-outline-secondary bg-danger text-white text-center pr-4 pl-4 mt-3 mt-md-0"
                 type="button"
                 value="reset"
                 onClick={this.props.reset}

@@ -5,7 +5,7 @@ import "../styles/Results.css";
 export default class Results extends React.Component {
   render() {
     return (
-      <div className="results-box d-flex flex-column justify-content-between">
+      <div className="results-box d-flex flex-column justify-content-between mt-5 mt-md-0">
        <div>
         <h2>Results</h2>
         <div className="mt-4">
@@ -15,7 +15,7 @@ export default class Results extends React.Component {
         <div className="chart">
             <Bar
             data={this.props.chartData}
-            // minHeight={635}
+            height={335}
             options={{
               responsive: true,
               legend: {
@@ -30,13 +30,6 @@ export default class Results extends React.Component {
                     },
                   },
                 ],
-                xAxes: [{
-                ticks: {
-                    autoSkip: false,
-                    maxRotation: 0,
-                    minRotation: 0
-                }
-            }]
               },
             }}
           />

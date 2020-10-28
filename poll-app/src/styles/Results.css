@@ -1,17 +1,11 @@
 .total-votes p {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 @media screen and (min-width: 768px) {
-    .vote-box {
-      height: 92vh;
-      width: 30%;
-    }
-    .vote-context {
-      height: 100%;
-    }
-    .answer-box {
-      height: 42px;
-    }
+  .results-box {
+    height: 92vh;
+    width: 40%;
+
   }
-  
+}

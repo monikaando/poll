@@ -5,8 +5,7 @@ import "../styles/Vote.css";
 export default class Vote extends React.Component {
   render() {
     return (
-      <div className="vote-box d-flex flex-column justify-content-between ml-md-5 mr-md-5">
-      
+      <div className="vote-box d-flex flex-column justify-content-between mt-5 mt-md-0 ml-md-5 mr-md-5">
         <div>
           <h2>Vote</h2>
         </div>
@@ -17,21 +16,20 @@ export default class Vote extends React.Component {
             </div>
             <VoteList
               answers={this.props.answers}
-              radioOnChange = {this.props.radioOnChange}
+              radioOnChange={this.props.radioOnChange}
             ></VoteList>
           </div>
         </div>
-       <div>
-       </div>
-        <div className="mb-2 align-self-end">
-        <button
-          className="btn btn-outline-secondary bg-info text-white text-center pr-5 pl-5"
-          id="btnVote"
-          type="button"
-          onClick={this.props.onVoteClick}
-        >
-          Vote
-        </button>
+        <div></div>
+        <div className="btn-vote mb-2 align-self-end">
+          <button
+            className="btn btn-outline-secondary bg-info text-white text-center pr-5 pl-5"
+            id="btnVote"
+            type="button"
+            onClick={this.props.onVoteClick}
+          >
+            Vote
+          </button>
         </div>
       </div>
     );

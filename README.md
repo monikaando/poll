@@ -4,17 +4,20 @@
 * [General info](#general-info)
 * [Stack](#stack)
 * [Content](#content)
-    - [Navigation bar](#navigation-bar)
-    - [Breweries button](#breweries-button)
-    - [Beers button](#beers-button)
+* [Create](#create)
+* [Vote](#vote)
+* [Results](#results)
 * [Footer](#footer)
+* [Online version](#online-version)
 * [Visuals](#visuals)
 * [Contact](#contact)
 ## Setup
 To run the application: npm start after installing node modules (npm i)
+
 ## Name
 Poll App
 Voting app with a column chart
+
 ## General info
     1) Application is built in frontend without backend interactions.
     2) The application is a single page application.
@@ -32,6 +35,7 @@ Voting app with a column chart
 
 ## Content    
     The application is divided into three sections (and the footer).
+
 ## Create
     User can:
     - add a title 
@@ -69,7 +73,10 @@ Voting app with a column chart
         
 ## Footer
     An additional element with the link to my portfolio.
-    
+
+## Online version 
+<a href="https://mswidzinska.github.io/DoGGo-App">https://mswidzinska.github.io/poll</a>
+
 ## Visuals
 Click a <a href="https://youtu.be/SOFQ6ZrYIBA"><b>video</b></a> and see how Poll App works.
 

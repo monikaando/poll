@@ -75,7 +75,7 @@ Voting app with a column chart
     An additional element with the link to my portfolio.
 
 ## Online version 
-<a href="https://mswidzinska.github.io/DoGGo-App">https://mswidzinska.github.io/poll</a>
+<a href="https://mswidzinska.github.io/poll">https://mswidzinska.github.io/poll</a>
 
 ## Visuals
 Click a <a href="https://youtu.be/SOFQ6ZrYIBA"><b>video</b></a> and see how Poll App works.
